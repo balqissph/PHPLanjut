@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Pendaftaran</title>
+  </head>
+  <body>
+    <h2>Form Pendaftaran</h2>
+    <form
+      action="proses_pendaftaran.php"
+      method="post"
+      onsubmit="saveFormData()"
+    >
+      <table>
+        <tr>
+          <td>NIM :</td>
+          <td><input type="text" id="nim" name="nim" required /></td>
+        </tr>
+        <tr>
+          <td>Nama Lengkap :</td>
+          <td><input type="text" id="nama" name="nama" required /></td>
+        </tr>
+        <tr>
+          <td>Email :</td>
+          <td><input type="email" id="email" name="email" required /></td>
+        </tr>
+        <tr>
+          <td>Tempat, Tanggal Lahir :</td>
+          <td>
+            <input
+              type="text"
+              id="tempat"
+              name="tempat"
+              placeholder="Tempat"
+              required
+            />
+            <input type="date" id="tanggal" name="tanggal" required />
+          </td>
+        </tr>
+        <tr>
+          <td>Alamat:</td>
+          <td><textarea id="alamat" name="alamat" required></textarea></td>
+        </tr>
+        <tr>
+          <td>Jenis Kelamin:</td>
+          <td>
+            <input
+              type="radio"
+              id="jenis_kelamin_laki"
+              name="jenis_kelamin"
+              value="Laki-laki"
+              required
+            />
+            <label for="jenis_kelamin_laki">Laki-laki</label>
+            <input
+              type="radio"
+              id="jenis_kelamin_perempuan"
+              name="jenis_kelamin"
+              value="Perempuan"
+              required
+            />
+            <label for="jenis_kelamin_perempuan">Perempuan</label>
+          </td>
+        </tr>
+      </table>
+      <br />
+      <input type="submit" value="Kirim" />
+    </form>
+    <script>
+      function saveFormData() {
+        var nim = document.getElementById("nim").value;
+        var nama = document.getElementById("nama").value;
+        var email = document.getElementById("email").value;
+        var tempat = document.getElementById("tempat").value;
+        var tanggal = document.getElementById("tanggal").value;
+        var alamat = document.getElementById("alamat").value;
+        var jenis_kelamin;
+        if (document.getElementById("jenis_kelamin_laki").checked) {
+          jenis_kelamin = document.getElementById("jenis_kelamin_laki").value;
+        } else if (document.getElementById("jenis_kelamin_perempuan").checked) {
+          jenis_kelamin = document.getElementById(
+            "jenis_kelamin_perempuan"
+          ).value;
+        }
+
+        document.cookie = "nim=" + nim;
+        document.cookie = "nama=" + nama;
+        document.cookie = "email=" + email;
+        document.cookie = "tempat=" + tempat;
+        document.cookie = "tanggal=" + tanggal;
+        document.cookie = "alamat=" + alamat;
+        document.cookie = "jenis_kelamin=" + jenis_kelamin;
+      }
+    </script>
+  </body>
+</html>
